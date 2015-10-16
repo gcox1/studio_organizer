@@ -1,0 +1,23 @@
+doctype html
+html
+    head
+      title Piano Studio
+    body
+      h3 Add A Lesson
+      form(action="/add_lesson" method="post")
+        |Lesson Name:
+        input(type="text" name="lesson_name")#lesson_name
+        br
+        |Date:
+        input(name="date" type="date")#date
+        br
+        button(type="submit") Submit
+      h3 Un-Verified Lessons
+      each item in lessons
+        form(action="/verify_lesson" method="post")
+          p=item[0]
+          p=item[1]
+          |verified?
+          input(type="checkbox" name="is_verified")#is_verified
+          br
+          button(type="submit") Enter
