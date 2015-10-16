@@ -30,10 +30,10 @@ app.post('/add_lesson', function(req,res){
 app.post('/verify_lesson', function(req, res){
   console.log('Verifying lesson');
   var is_verified = req.body.is_verified; //'on' or undefined
-  var
   if (is_verified == 'on'){
     console.log(is_verified);
   }
+  //update sql database!
   res.send('Lesson Verified');
 });
 
