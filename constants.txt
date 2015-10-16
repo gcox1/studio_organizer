@@ -1,0 +1,4 @@
+constants.txt
+
+Postgres Database Connection info:
+  You are connected to database "postgres" as user "nitrous" via socket in "/var/run/postgresql" at port "5432".
