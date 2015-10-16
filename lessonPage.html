@@ -3,12 +3,18 @@
   <head>
      <meta charset="utf-8">
      <title>Piano Studio</title>
+
   </head>
   <body>
-    <h3>Add a lesson:</h3>
-    Lesson Name: <input name="lesson-name" id="lesson-name" type="text" /> <br>
-    Date: <input name="month" id="month" type="date" /> <br>
-   <input id="add-lesson" name="buttonExecute" type="button" value="Add" />
+    <h3>Add a Lesson:</h3>
+    <form action="/add_lesson" method="post">
+      Lesson Name: <input name="lesson_name" id="lesson_name" type="text" /> <br>
+      Date: <input name="date" id="date" type="date" /> <br>
+      <button type="submit">Submit </button>
+    </form>
    <h3>View Lessons: </h3>
+    <form action="/get_lesson" method="get">
+      <!-- This is where the list shows up -->
+    </form>
   </body>
 </html>
