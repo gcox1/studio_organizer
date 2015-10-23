@@ -14,7 +14,7 @@ pg.connect(conString, function(err, client, done) {
     }
   console.log(result.rows);
 });
-  client.query('INSERT INTO lessons_attendance (LessonName, AttendanceTaken, LessonAttended) VALUES ("Joey Lesson", TRUE, TRUE), ("Billy Lesson", TRUE, FALSE), ("Tina Lesson", FALSE, FALSE);', function(err,result){
+  client.query("INSERT INTO lessons_attendance (LessonName, AttendanceTaken, LessonAttended) VALUES ('Joey Lesson', TRUE, TRUE), ('Billy Lesson', TRUE, FALSE), ('Tina Lesson', FALSE, FALSE);", function(err,result){
    done();
 
    if(err) {
@@ -22,17 +22,30 @@ pg.connect(conString, function(err, client, done) {
     }
   console.log(result.rows);
 });
-*/
-var query = client.query('SELECT lessonname FROM lessons_attendance;', function(err,result){
-   done();
 
+var query = client.query('SELECT lessonname FROM lessons_attendance;', function(err,result){
+
+//console.log(result);
    if(err) {
       return console.error('error running query', err);
     }
- query.on('row', function(row) {
-      console.log(row.lessonname.tostring);
+
+   done();
+});*/
+ var query = client.query('SELECT * FROM lessons_attendance;');
+  query.on('row', function(row) {
+   if (row.lessonattended === true){
+     console.log(row.lessonname + ' was attended');
+   } else if (row.attendancetaken === false){
+     console.log(row.lessonname + ' has no attendance taken')
+   }else {
+     console.log(row.lessonname + ' was not attended')
+   }
+    
+    console.log("row received " + row.lessonname + ' ' + row.attendancetaken);
+    done();
+
  });
-});
 });
 
 
