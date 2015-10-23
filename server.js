@@ -10,7 +10,9 @@ app.set('view engine', 'jade');
 app.use(bodyParser());
 app.get('/', function (req, res){
   //call function to get list
-  ls = [['Lesson with Patrick', '10/16/2015'], ['Lesson with Greg', '10/15/2015']];
+  var ls = [];
+  ls.push({name:'Lesson with Patrick', datetime:'10/16/2015', id: '5'});
+  //{'name': 'Lesson with Greg', 'datetime': '10/15/2015', 'id': '10'}];
 
   res.render('index', {lessons:ls});
 //  console.log('Loading home page')
@@ -21,6 +23,7 @@ app.post('/add_lesson', function(req,res){
   console.log('Adding a lesson');
   var leson_name = req.body.lesson_name;
   var date = req.body.date;
+  var time = req.body.time;
   //call sql add function
   res.send('Lesson Added');
   //res.sendFile(path.join(__dirname + '/lessonPage.html'));
